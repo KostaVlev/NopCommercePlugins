@@ -1,0 +1,29 @@
+﻿@model Nop.Plugin.Widgets.HomePageNewProducts.Models.ConfigurationModel
+
+@{
+    Layout = "";
+}
+
+@Html.Action("StoreScopeConfiguration", "Setting", new { area = "Admin" })
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <fieldset>
+        <legend><strong>"Number of products to show"</strong></legend>
+        <table class="adminContent">
+            <tr>
+                <td class="adminData">
+                    @Html.EditorFor(model => model.NumberOfProducts)
+                    @Html.ValidationMessageFor(model => model.NumberOfProducts)
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+    <table class="adminContent">
+        <tr>
+            <td colspan="2">
+                <input type="submit" name="save" class="k-button" value="Save" />
+            </td>
+        </tr>
+    </table>
+}
