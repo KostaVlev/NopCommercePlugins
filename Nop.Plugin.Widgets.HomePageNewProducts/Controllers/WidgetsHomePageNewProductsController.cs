@@ -35,7 +35,7 @@ namespace Nop.Plugin.Widgets.HomePageNewProducts.Controllers
         }
 
         [ChildActionOnly]
-        public ActionResult NewProducts(int? productThumbPictureSize)
+        public ActionResult PublicInfo(int? productThumbPictureSize)
         {
             var homePageNewProductsSettings = _settingService.LoadSetting<HomePageNewProductsSettings>(_storeContext.CurrentStore.Id);
             var productController = DependencyResolver.Current.GetService<ProductController>();

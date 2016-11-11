@@ -29,7 +29,7 @@ namespace Nop.Plugin.Widgets.HomePageNewProducts
         /// <param name="routeValues">Route values</param>
         public void GetDisplayWidgetRoute(string widgetZone, out string actionName, out string controllerName, out RouteValueDictionary routeValues)
         {
-            actionName = "NewProducts";
+            actionName = "PublicInfo";
             controllerName = "WidgetsHomePageNewProducts";
             routeValues = new RouteValueDictionary
             {
