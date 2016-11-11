@@ -41,15 +41,17 @@ namespace Nop.Plugin.Widgets.HomePageNewProducts.Controllers
             var productController = DependencyResolver.Current.GetService<ProductController>();
             productController.ControllerContext = new ControllerContext(this.Request.RequestContext, productController);
 
-            this.RouteData.Values["controller"] = "Product";
-            this.RouteData.Values["action"] = "HomepageProducts";
-
             var actionResult = productController.HomepageProducts(productThumbPictureSize);
 
             var model = ((PartialViewResult)actionResult).Model as IList<ProductOverviewModel>;
+            if (model == null)
+            {
+                return Content("");
+            }
+
             var result = model.Where(m => m.MarkAsNew).Take(homePageNewProductsSettings.NumberOfProducts).ToList();
 
-            return PartialView(result);
+            return View("~/Plugins/Widgets.HomePageNewProducts/Views/HomePageNewProducts/PublicInfo.cshtml", result);
         }
 
         [AdminAuthorize]

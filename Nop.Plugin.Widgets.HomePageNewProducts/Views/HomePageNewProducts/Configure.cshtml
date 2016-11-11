@@ -1,4 +1,5 @@
 ﻿@model Nop.Plugin.Widgets.HomePageNewProducts.Models.ConfigurationModel
+@using Nop.Web.Framework;
 
 @{
     Layout = "";
@@ -9,9 +10,12 @@
 {
     @Html.AntiForgeryToken()
     <fieldset>
-        <legend><strong>"Number of products to show"</strong></legend>
+        <legend><strong>"@T("Admin.Catalog.Products")"</strong></legend>
         <table class="adminContent">
             <tr>
+                <td class="adminTitle">
+                    @Html.LabelFor(model => model.NumberOfProducts):
+                </td>
                 <td class="adminData">
                     @Html.EditorFor(model => model.NumberOfProducts)
                     @Html.ValidationMessageFor(model => model.NumberOfProducts)
@@ -22,7 +26,7 @@
     <table class="adminContent">
         <tr>
             <td colspan="2">
-                <input type="submit" name="save" class="k-button" value="Save" />
+                <input type="submit" name="save" class="k-button" value="@T("Admin.Common.Save")" />
             </td>
         </tr>
     </table>
